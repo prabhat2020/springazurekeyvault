@@ -62,6 +62,31 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+
+		<dependency>
+			<groupId>io.dapr</groupId>
+			<artifactId>dapr-sdk</artifactId>
+			<version>0.10.0</version>
+		</dependency>
+		<!-- Dapr's SDK for Actors (optional). -->
+		<dependency>
+			<groupId>io.dapr</groupId>
+			<artifactId>dapr-sdk-actors</artifactId>
+			<version>0.10.0</version>
+		</dependency>
+		<!-- Dapr's SDK integration with SpringBoot (optional). -->
+		<dependency>
+			<groupId>io.dapr</groupId>
+			<artifactId>dapr-sdk-springboot</artifactId>
+			<version>0.10.0</version>
+		</dependency>
+		<!-- If needed, resolve version conflict of okhttp3. -->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>4.2.2</version> <!-- version required by Dapr's sdk -->
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -101,6 +126,13 @@
 						<artifactId>kotlin-maven-allopen</artifactId>
 						<version>${kotlin.version}</version>
 					</dependency>
+					<!-- Dapr's core SDK with all features, except Actors. -->
+
+<!--					<dependency>-->
+<!--						<groupId>io.dapr</groupId>-->
+<!--						<artifactId>client</artifactId>-->
+<!--						<version>0.1.0-preview01</version>-->
+<!--					</dependency>-->
 				</dependencies>
 			</plugin>
 		</plugins>
@@ -120,6 +152,16 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		<!-- BEGIN: Dapr's repositories -->
+		<repository>
+			<id>oss-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>oss-release</id>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+		</repository>
+		<!-- END: Dapr's repositories -->
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
